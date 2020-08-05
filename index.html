@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- display for highscore link and timer -->
     <nav class="nav-bar">
-        <div class="viewScores"><a href="#">View Scores</a></div>
-        <div class="timer">Time Left: 15</div>
+        <div class="viewScores"><a href="#" class="scoresLink">View Scores</a></div>
+        <div class="timer">Time Left: 60</div>
     </nav>
     <div class = "quiz">
          <!-- start button -->
-    <div class="start">
+    <div class="startContainer">
+        <h1>How much do you know about Javascript?</h1>
+        <p>Take the quiz and find out!</p>
         <button class="startButton">Start</button>
     </div>
     <!-- container for questions and answers -->
@@ -32,8 +35,10 @@
     <div class="highScoreContainer hide">
         <h1 class = "finalScore">Final Score: </h1>
         <p>Please enter your name</p>
-        <input class= "userName" type="text">
-        <input type ='submit' class="scoreButton"></input>
+        <form>
+            <input class= "userName" type="text"/>
+            <input type ='submit' class="scoreButton"/>
+        </form>
         <div class="scoreDisplay"></div>
         <ol class = "highScoreList"></ol>
     </div>
@@ -43,6 +48,7 @@
     <div class="viewScoresContainer hide">
         <h1>Scores</h1>
         <ol class = "viewScoreList"></ol>
+        <button class = "goBack">Go Back</button>
     </div>
 </div>
     

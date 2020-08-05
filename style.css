@@ -1,8 +1,9 @@
 body{
     padding: 0;
     margin: 0;
-    font-family:"Courier New", Courier, monospace;
-    background-image: linear-gradient(to bottom right,#DB7F67, #DBBEA1, #43AA8B);
+    font-family: 'Titillium Web', sans-serif;
+    background-image: linear-gradient(to bottom right,#000, #434343);
+    color: white;
     width: 100vw;
     height: 100vh;
 }
@@ -11,28 +12,30 @@ body{
     display: flex;
     font-weight: bold;
     font-size: 25px;
-    width: 100%;
+    width: 90%;
     height: 50px;
+    margin: 20px;
+    justify-content: space-between;
+    padding: 10px;
 }
 
-.highScores{
-    position: fixed;
-    left: 2em;
-    top: 1em;
-}
-
-.highScores a{
-    color: black;
+.viewScores a{
+    color: white;
     text-decoration: none;
 }
 
-.highScores a:hover{
-    color: white;
+.viewScores a:hover{
+    color: powderblue;
     cursor: pointer;
 }
 
-
-
+.viewScoreList, .highScoreList{
+    padding: 5px 40px;
+    font-size: 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
 .timer{
     position: fixed;
     right: 2em;
@@ -47,6 +50,10 @@ body{
     margin: 0 auto;
     flex-direction: column;
 }
+.startContainer{
+    text-align: center;
+}
+
 .container{
     display: flex;
     justify-content: center;
@@ -60,7 +67,7 @@ body{
     padding: 5px 10px;
     border: 1px solid white;
     border-radius: 5px;
-    background-color: slategray;
+    background-color: transparent;
     color: white;
     display: block;
     margin-bottom: 10px;
@@ -69,7 +76,8 @@ body{
 
 .btn:hover{
     cursor: pointer;
-    background-color: transparent;
+    background-color: white;
+    color: black
 }
 
 .startButton, .restartButton{
@@ -77,31 +85,32 @@ body{
     border-radius: 5px;
     font-weight: bold;
     padding: 20px 60px;
+    cursor: pointer;
 }
-
-.start{
-    position: absolute;
-    top: 27em;
-    text-align: center;
-    width: 100%;
+.goBack{
+    cursor: pointer;
+    padding: 10px 40px;
+    font-size: 20px;
 }
-
 .question{
     margin-bottom: 40px;
+    align-self: flex-start;
+    font-size: 25px;
+}
+.userSelections{
+    align-self: flex-start;
+    margin-bottom: 20px;
 }
 .correctWrong{
-    position: fixed;
-    bottom: 20em;
+    font-size: 40px;
+    align-self: flex-start;
 }
 
 .correct{
-    font-size: 20px;
     color: green;
-    position: fixed
 }
 
 .wrong{
-    font-size: 20px;
     color: red;
 }
 
