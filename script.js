@@ -18,6 +18,7 @@ const restartButton = document.querySelector(".restartButton");
 const btn = document.querySelector('.btn')
 const goBack = document.querySelector('.goBack')
 
+// will push user scores and names, then this array gets sent to local storage
 const userScores = [];
 
 let score = 0;
@@ -26,6 +27,7 @@ let count = 60;
 
 startButton.addEventListener("click", startQuiz);
 
+// starts timer and invokes question function to start looping through questions 
 function startQuiz() {
   startContainer.classList.add("hide");
   container.classList.remove("hide");
@@ -33,6 +35,23 @@ function startQuiz() {
   timeLeft();
 }
 
+// function for timer to run
+function timeLeft() {
+  var countdown = setInterval(function () {
+    timer.textContent = "Time Left: " + count;
+    count--;
+    if (count < 0) {
+      count = 0;
+      clearInterval(countdown);
+      alert("You ran out of time!");
+      highScoreContainer.classList.remove("hide");
+      finalScore.textContent = "Final Score: " + score;
+      container.classList.add("hide");
+    }
+  }, 1000);
+}
+
+// functions to display scores when view scores link is clicked in nav
 viewScores.addEventListener("click", function () {
   viewScoreList.innerHTML = "";
   if(!userScores.length){
@@ -53,6 +72,7 @@ viewScores.addEventListener("click", function () {
   count = 60;
 });
 
+// this allows user to go back to main screen from view scores link
 goBack.addEventListener('click', function(){
   startContainer.classList.remove("hide");
   viewScoresContainer.classList.add("hide");
@@ -60,51 +80,7 @@ goBack.addEventListener('click', function(){
   scoreButton.classList.remove('hide')
 })
 
-// function timeLeft() {
-//   var countdown = setInterval(function () {
-//     timer.textContent = "Time Left: " + count;
-//     count--;
-//     if (count < 0) {
-//       count = 0;
-//       clearInterval(countdown);
-//       alert("You ran out of time!");
-//       highScoreContainer.classList.remove("hide");
-//       finalScore.textContent = "Final Score: " + score;
-//       container.classList.add("hide");
-//     }
-//   }, 1000);
-// }
-
-function storeUsers() {
-  // Add code here to stringify the todos array and save it to the "todos" key in localStorage
-  localStorage.setItem("userScores", JSON.stringify(userScores));
-}
-
-scoreButton.addEventListener("click", function (event) {
-  highScoreList.innerHTML = "";
-  event.preventDefault();
-  if(!userName.value){
-      return false;
-  };
-  const userText = userName.value;
-  userScores.push(userText + " _____ " + "SCORE: " + score);
-  storeUsers();
-  renderUsers();
-  userName.value = "";
-  userName.classList.add('hide')
-  scoreButton.classList.add('hide')
-  restartButton.classList.remove("hide");
-});
-
-function renderUsers() {
-  for (let i = 0; i < userScores.length; i++) {
-    const user = JSON.parse(localStorage.getItem("userScores"));
-    const userList = document.createElement("li");
-    userList.innerText = user[i];
-    highScoreList.appendChild(userList);
-  }
-}
-
+//setting which question and answer to display, creating element for them to be displayed
 function questionSelector(arr) {
   question.innerText = arr[index].question;
   userSelections.innerHTML = "";
@@ -120,17 +96,7 @@ function questionSelector(arr) {
   });
 }
 
-function endQuiz() {
-  if (index === questions.length) {
-    highScoreContainer.classList.remove("hide");
-    finalScore.textContent = "Final Score: " + score;
-    container.classList.add("hide");
-    count = 0;
-    //this stops the alert from happening
-    alert = function(){};
-  }
-}
-
+//after user selects an answer, we display correct or wrong
 function correctWrong(selection) {
   if (selection === "true") {
     correct.classList.remove("hide");
@@ -150,6 +116,50 @@ function correctWrong(selection) {
   }, 500);
 }
 
+// quiz is over, show our score
+function endQuiz() {
+  if (index === questions.length) {
+    highScoreContainer.classList.remove("hide");
+    finalScore.textContent = "Final Score: " + score;
+    container.classList.add("hide");
+    count = 0;
+    //this stops the alert from happening
+    alert = function(){};
+  }
+}
+
+// sending our array to local storage
+function storeUsers() {
+  localStorage.setItem("userScores", JSON.stringify(userScores));
+}
+
+//quiz is finished, user inputs name and submits, user name and score pushed to array
+scoreButton.addEventListener("click", function (event) {
+  highScoreList.innerHTML = "";
+  event.preventDefault();
+  if(!userName.value){
+      return false;
+  };
+  const userText = userName.value;
+  userScores.push(userText + " _____ " + "SCORE: " + score);
+  storeUsers();
+  renderUsers();
+  userName.classList.add('hide')
+  scoreButton.classList.add('hide')
+  restartButton.classList.remove("hide");
+});
+
+// creating li to display userScore array info
+function renderUsers() {
+  for (let i = 0; i < userScores.length; i++) {
+    const user = JSON.parse(localStorage.getItem("userScores"));
+    const userList = document.createElement("li");
+    userList.innerText = user[i];
+    highScoreList.appendChild(userList);
+  }
+}
+
+//restart to send us back to homepage after we have entered our name for score
 restartButton.addEventListener("click", function () {
   restartButton.classList.add("hide");
   highScoreContainer.classList.add("hide");

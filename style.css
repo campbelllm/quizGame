@@ -68,7 +68,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 30%;
+    width: 50vw;
     height: 80%;
     flex-direction: column;
 }

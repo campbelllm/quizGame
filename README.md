@@ -2,7 +2,7 @@ Homework Week 4 - Quiz Game
 
 Description:
 
-Make a Javascript quiz that is timed, and allows you to save your score. 
+Make a Javascript quiz that is timed, and allows you to save your score using local storage.  
 
 Link to repo:
 
