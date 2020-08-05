@@ -36,32 +36,43 @@ body{
     border-radius: 5px;
     margin-bottom: 20px;
 }
-.timer{
-    position: fixed;
-    right: 2em;
-    top: 1em;
+.goBack{
+    cursor: pointer;
+    padding: 10px 40px;
+    font-size: 20px;
 }
+
+.startContainer{
+    text-align: center;
+}
+
+.startButton, .restartButton{
+    font-size: 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 20px 60px;
+    cursor: pointer;
+}
+
 .quiz{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
+    width: 100vw;
     height: 70vh;
     margin: 0 auto;
     flex-direction: column;
-}
-.startContainer{
-    text-align: center;
 }
 
 .container{
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 80%;
+    align-items: flex-start;
+    width: 30%;
     height: 80%;
     flex-direction: column;
 }
+
 
 .btn{
     padding: 5px 10px;
@@ -79,18 +90,8 @@ body{
     background-color: white;
     color: black
 }
-
-.startButton, .restartButton{
-    font-size: 30px;
-    border-radius: 5px;
-    font-weight: bold;
-    padding: 20px 60px;
-    cursor: pointer;
-}
-.goBack{
-    cursor: pointer;
-    padding: 10px 40px;
-    font-size: 20px;
+.questionAnswer{
+    align-self: center;
 }
 .question{
     margin-bottom: 40px;
@@ -105,7 +106,6 @@ body{
     font-size: 40px;
     align-self: flex-start;
 }
-
 .correct{
     color: green;
 }

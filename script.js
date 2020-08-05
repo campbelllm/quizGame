@@ -34,6 +34,11 @@ function startQuiz() {
 }
 
 viewScores.addEventListener("click", function () {
+  viewScoreList.innerHTML = "";
+  if(!userScores.length){
+    alert('There are no scores')
+    return false;
+  }
   startContainer.classList.add("hide");
   viewScoresContainer.classList.remove("hide");
   for (let i = 0; i < userScores.length; i++) {
@@ -138,7 +143,6 @@ function correctWrong(selection) {
   }
   index++;
   endQuiz();
-  console.log(index);
   setTimeout(() => {
     correct.classList.add("hide");
     wrong.classList.add("hide");
