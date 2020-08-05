@@ -6,6 +6,7 @@ body{
     width: 100vw;
     height: 100vh;
 }
+
 .nav-bar{
     display: flex;
     font-weight: bold;
@@ -30,18 +31,29 @@ body{
     cursor: pointer;
 }
 
+
+
 .timer{
     position: fixed;
     right: 2em;
     top: 1em;
 }
-.container{
+.quiz{
     display: flex;
-    width: 80%;
-    height: 80%;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    width: 500px;
+    height: 70vh;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    flex-direction: column;
 }
 
 .btn{
@@ -60,7 +72,7 @@ body{
     background-color: transparent;
 }
 
-.startButton{
+.startButton, .restartButton{
     font-size: 30px;
     border-radius: 5px;
     font-weight: bold;
@@ -75,9 +87,7 @@ body{
 }
 
 .question{
-    position: fixed;
-    top: 20em;
-    left: 24em;
+    margin-bottom: 40px;
 }
 .correctWrong{
     position: fixed;
@@ -96,5 +106,5 @@ body{
 }
 
 .hide{
-    visibility: hidden;
+    display: none;
 }
